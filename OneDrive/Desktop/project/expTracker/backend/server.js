@@ -27,13 +27,17 @@ app.post("/expenses", async (req, res) => {
   const { item_name, amount } = req.body;
   console.log("Parsed expense data:", { item_name, amount });
 
-  const response = await axios.post(`${POSTGREST_URL}/expenses`, {
-    item_name,
-    amount,
-  });
-  console.log("PostgREST response:", response.data);
-
-  res.status(201).json(response.data);
+  try {
+    const response = await axios.post(`${POSTGREST_URL}/expenses`, {
+      item_name,
+      amount,
+    });
+    console.log("PostgREST response:", response.data);
+    res.status(201).json(response.data);
+  } catch (error) {
+    console.error("Error inserting expense:", error);
+    res.status(500).json({ error: "Failed to insert expense" });
+  }
 });
 
 app.delete("/expenses/:id", async (req, res) => {
@@ -49,3 +53,4 @@ app.get("/", (req, res) => {
 app.listen(3000, () => {
   console.log("server is running on port 3000");
 });
+

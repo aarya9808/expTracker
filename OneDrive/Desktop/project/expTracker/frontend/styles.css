@@ -5,8 +5,8 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,67 +15,92 @@ body {
 }
 
 .container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    width: 400px; 
+    text-align: center;
+    background: linear-gradient(135deg, #FFB6C1, #D7B9D5); 
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
+    font-size: 32px; 
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); 
 }
 
 .form {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 input {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
     border: 1px solid #ddd;
+    transition: border-color 0.3s ease-in-out;
+    font-size: 16px; 
+}
+
+input:focus {
+    border-color: #b39ddb; 
+    outline: none;
 }
 
 button {
-    padding: 10px;
-    border-radius: 5px;
+    padding: 15px;
+    border-radius: 8px;
     border: none;
-    background-color: #4CAF50;
+    background-color: #6a5acd; 
     color: white;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 18px; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #836fa9; 
+    transform: translateY(-2px); 
 }
 
 ul {
     list-style-type: none;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 li {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    padding: 12px 0;
     border-bottom: 1px solid #ddd;
+    color: #333;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+li:hover {
+    background-color: #f0f4f8; 
+    color: #6a5acd; 
 }
 
 li button {
-    background-color: #ff4d4d;
+    background-color: #f06292;
     border: none;
     color: white;
-    padding: 5px;
-    border-radius: 5px;
+    padding: 8px;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 li button:hover {
-    background-color: #f44336;
+    background-color: #ec407a; 
+    transform: scale(1.1); 
 }
 
 .total {
@@ -83,5 +108,12 @@ li button:hover {
 }
 
 .total h2 {
-    font-size: 18px;
+    font-size: 24px; 
+    color: #333;
+    margin-top: 20px;
+    font-weight: bold;
+    background-color: #6a5acd; 
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
 }
