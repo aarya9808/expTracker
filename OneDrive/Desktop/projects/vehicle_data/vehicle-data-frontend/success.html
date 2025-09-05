@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a1a;
+            --bg-secondary: #1a1a2e;
+            --surface: rgba(255, 255, 255, 0.03);
+            --surface-card: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --success: #10b981;
+            --success-light: rgba(16, 185, 129, 0.1);
+            --border: rgba(255, 255, 255, 0.1);
+            --radius: 16px;
+            --font: 'Inter', system-ui, -apple-system, sans-serif;
+            --shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* Animated background elements */
+        .background-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-orb:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--success), #06d6a0);
+            top: 10%;
+            right: 15%;
+            animation-delay: -1s;
+        }
+
+        .bg-orb:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, var(--accent), #60a5fa);
+            bottom: 20%;
+            left: 10%;
+            animation-delay: -3s;
+        }
+
+        .bg-orb:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #10b981, var(--accent));
+            top: 60%;
+            right: 5%;
+            animation-delay: -2s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-25px) rotate(120deg);
+            }
+
+            66% {
+                transform: translateY(15px) rotate(240deg);
+            }
+        }
+
+        /* Success container */
+        .success-container {
+            background: var(--surface-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 48px 40px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Success icon */
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--success), #06d6a0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px auto;
+            font-size: 40px;
+            animation: scaleIn 0.5s ease-out 0.2s both;
+            position: relative;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .success-icon::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--success), #06d6a0);
+            animation: pulse 2s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Typography */
+        .success-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 16px 0;
+            letter-spacing: -0.02em;
+            animation: slideUp 0.6s ease-out 0.3s both;
+        }
+
+        .success-message {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin: 0 0 32px 0;
+            line-height: 1.6;
+            animation: slideUp 0.6s ease-out 0.4s both;
+        }
+
+        /* Success details - removed */
+
+        /* Action buttons */
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            animation: slideUp 0.6s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: var(--font);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--surface-card);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Confetti animation */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--success);
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        .confetti:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            background: var(--success);
+        }
+
+        .confetti:nth-child(2) {
+            left: 20%;
+            animation-delay: 0.5s;
+            background: var(--accent);
+        }
+
+        .confetti:nth-child(3) {
+            left: 30%;
+            animation-delay: 1s;
+            background: #f59e0b;
+        }
+
+        .confetti:nth-child(4) {
+            left: 40%;
+            animation-delay: 1.5s;
+            background: var(--success);
+        }
+
+        .confetti:nth-child(5) {
+            left: 50%;
+            animation-delay: 2s;
+            background: #8b5cf6;
+        }
+
+        .confetti:nth-child(6) {
+            left: 60%;
+            animation-delay: 0.8s;
+            background: var(--accent);
+        }
+
+        .confetti:nth-child(7) {
+            left: 70%;
+            animation-delay: 1.3s;
+            background: #f59e0b;
+        }
+
+        .confetti:nth-child(8) {
+            left: 80%;
+            animation-delay: 1.8s;
+            background: var(--success);
+        }
+
+        .confetti:nth-child(9) {
+            left: 90%;
+            animation-delay: 0.3s;
+            background: #8b5cf6;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 640px) {
+            .success-container {
+                padding: 32px 24px;
+                margin: 10px;
+            }
+
+            .success-title {
+                font-size: 28px;
+            }
+
+            .success-message {
+                font-size: 16px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+        }
+
+        /* Auto redirect countdown */
+        .countdown {
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            animation: slideUp 0.6s ease-out 0.7s both;
+        }
+
+        .countdown strong {
+            color: var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-elements">
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+    </div>
+
+    <!-- Confetti elements -->
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+
+    <div class="success-container">
+        <div class="success-icon">
+            ✅
+        </div>
+
+        <h1 class="success-title">Data Added Successfully!</h1>
+
+        <p class="success-message">
+        </p>
+
+      
+
+        
+    </div>
+
+    <script>
+     
+        // Add click animation to buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function (e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        
+        console.log('Vehicle successfully added to the system!');
+    </script>
+</body>
+
+</html>
